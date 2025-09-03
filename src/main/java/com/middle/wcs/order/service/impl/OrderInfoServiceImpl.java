@@ -8,6 +8,7 @@ import com.middle.wcs.order.dao.OrderInfoMapper;
 import com.middle.wcs.order.service.OrderInfoService;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 import static com.github.pagehelper.page.PageMethod.startPage;
@@ -124,5 +125,28 @@ public class OrderInfoServiceImpl implements OrderInfoService {
         // 根据his_create_time排序
         queryWrapper.orderByDesc("insert_time");
         return this.orderInfoMapper.selectList(queryWrapper);
+    }
+
+    @Override
+    public Integer updateOrderByOrderIdAndTrayCode(String orderId, String trayCode) {
+        // 构建查询条件
+        QueryWrapper<OrderInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("order_id", orderId);
+        queryWrapper.eq("tray_code", trayCode);
+        // 按插入时间倒序排序
+        queryWrapper.orderByDesc("insert_time");
+
+        // 查询记录
+        OrderInfo orderInfo = orderInfoMapper.selectOne(queryWrapper);
+        if (orderInfo == null) {
+            return 0; // 没有找到记录
+        }
+
+        // 更新完成时间和状态
+        orderInfo.setFinishTime(new Date());
+        orderInfo.setOrderStatus(1); // 1表示已完成
+
+        // 执行更新
+        return orderInfoMapper.updateById(orderInfo);
     }
 }

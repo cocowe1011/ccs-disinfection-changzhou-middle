@@ -48,4 +48,13 @@ public interface OrderInfoService {
     OrderInfo getOrderInfoByBatchId(Long batchId);
 
     List<OrderInfo> selectList(OrderInfo po);
+
+    /**
+     * 根据订单号和托盘号更新完成时间和状态
+     *
+     * @param orderId 订单号
+     * @param trayCode 托盘号
+     * @return 更新影响的行数
+     */
+    Integer updateOrderByOrderIdAndTrayCode(String orderId, String trayCode);
 }

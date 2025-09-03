@@ -38,6 +38,12 @@ public class OrderInfoController {
         return ResponseResult.success(this.orderInfoService.update(po));
     }
 
+    @ApiOperation("更新订单信息-通过订单号和托盘号")
+    @PostMapping("/updateByOrderIdAndTrayCode")
+    public ResponseResult<Integer> updateByOrderIdAndTrayCode(@ApiParam(value = "订单信息", required = true) @RequestBody OrderInfo orderInfo) {
+        return ResponseResult.success(this.orderInfoService.updateOrderByOrderIdAndTrayCode(orderInfo.getOrderId(), orderInfo.getTrayCode()));
+    }
+
     @ApiOperation("根据ID查询订单信息")
     @GetMapping("/getOrderInfoById")
     public ResponseResult<OrderInfo> getOrderInfoById(@ApiParam(value = "订单ID", required = true) Long id) {
