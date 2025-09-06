@@ -88,7 +88,49 @@ public class OrderInfo {
      * 一个产品编号一条明细
      */
     private String detailList;
-    
+
+    /** 预热间名称/编号 */
+    private String preheatingRoom;
+
+    /** 进入预热间时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date inPreheatingRoomTime;
+
+    /** 离开预热间时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date outPreheatingRoomTime;
+
+    /** 灭菌间名称/编号 */
+    private String sterilizationRoom;
+
+    /** 进入灭菌间时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date inSterilizationRoomTime;
+
+    /** 离开灭菌间时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date outSterilizationRoomTime;
+
+    /** 解析间名称/编号 */
+    private String analysisRoom;
+
+    /** 进入解析间时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date inAnalysisRoomTime;
+
+    /** 离开解析间时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date outAnalysisRoomTime;
+
+    /** 备注，批号 */
+    private String batchNo;
+
+    /** 规格 */
+    private String unit;
+
+    /** 规格数量 */
+    private String receivedPkgQuantity;
+
     /**
      * 起始页数
      */
