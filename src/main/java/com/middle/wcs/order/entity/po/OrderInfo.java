@@ -122,8 +122,13 @@ public class OrderInfo {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date outAnalysisRoomTime;
 
-    /** 备注，批号 */
+    /** 批号 */
     private String batchNo;
+
+    /**
+     * 备注
+     */
+    private String remark;
 
     /** 规格 */
     private String unit;
